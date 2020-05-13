@@ -1,0 +1,1182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>event</class>
+ <widget class="QDialog" name="event">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1206</width>
+    <height>676</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>event</string>
+  </property>
+  <widget class="QTabWidget" name="TABLE">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>20</y>
+     <width>1221</width>
+     <height>681</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(42, 41, 46);</string>
+   </property>
+   <property name="currentIndex">
+    <number>3</number>
+   </property>
+   <widget class="QWidget" name="tab_29">
+    <attribute name="title">
+     <string>Ajouter/supprimer Evenement</string>
+    </attribute>
+    <widget class="QGroupBox" name="groupBox_29">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>40</y>
+       <width>351</width>
+       <height>391</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 15pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(21, 30, 45);
+color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="title">
+      <string>Ajouter un Evenement</string>
+     </property>
+     <widget class="QLabel" name="label_133">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>110</y>
+        <width>141</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Nom</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="ajouter_nom">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>110</y>
+        <width>113</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+                                         background-color: white;
+                                         border-radius: 10px;
+                                         font: bold 14px;</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="ajouter_even">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>360</y>
+        <width>101</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: white;
+                                         
+background-color: rgb(255, 0, 0);
+                                         border-radius: 10px;
+                                         font: bold 14px;</string>
+      </property>
+      <property name="text">
+       <string>Ajouter</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_134">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>60</y>
+        <width>131</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Id_evenement</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="ajouter_id_evenement">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>60</y>
+        <width>113</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+                                         background-color: white;
+                                         border-radius: 10px;
+                                         font: bold 14px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_135">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>160</y>
+        <width>131</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Lieu </string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="ajouter_lieu">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>160</y>
+        <width>113</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+                                         background-color: white;
+                                         border-radius: 10px;
+                                         font: bold 14px;</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QPushButton" name="supprimer_even">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>440</y>
+       <width>241</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: white;
+                                         
+background-color: rgb(255, 0, 0);
+                                         border-radius: 10px;
+                                         font: bold 14px;
+</string>
+     </property>
+     <property name="text">
+      <string>Supprimer par identifiant</string>
+     </property>
+    </widget>
+    <widget class="QTableView" name="table_eve">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>60</y>
+       <width>771</width>
+       <height>361</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: black;
+                                        
+background-color: rgb(245, 245, 245);
+font: 14pt &quot;MS Shell Dlg 2&quot;;
+                                         border-radius: 10px;
+                                         font: bold 14px;</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="supprimer_even_2">
+     <property name="geometry">
+      <rect>
+       <x>270</x>
+       <y>440</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: black;
+                                         background-color: white;
+                                         border-radius: 10px;
+                                         font: bold 14px;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="tri_desc_even">
+     <property name="geometry">
+      <rect>
+       <x>950</x>
+       <y>20</y>
+       <width>121</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: white;
+                                         
+background-color: rgb(255, 0, 0);
+                                         border-radius: 10px;
+                                         font: bold 14px;</string>
+     </property>
+     <property name="text">
+      <string>Decroissant</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="tri_asc_even">
+     <property name="geometry">
+      <rect>
+       <x>820</x>
+       <y>20</y>
+       <width>111</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: white;
+                                         
+background-color: rgb(255, 0, 0);
+                                         border-radius: 10px;
+                                         font: bold 14px;</string>
+     </property>
+     <property name="text">
+      <string>Croissante</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab_30">
+    <attribute name="title">
+     <string>Modifier Evenement</string>
+    </attribute>
+    <widget class="QGroupBox" name="groupBox_30">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>50</y>
+       <width>351</width>
+       <height>371</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
+     </property>
+     <property name="title">
+      <string>Modifier la reservation</string>
+     </property>
+     <widget class="QPushButton" name="modifier_even">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>330</y>
+        <width>101</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: white;
+                                         
+background-color: rgb(255, 0, 0);
+                                         border-radius: 10px;
+                                         font: bold 14px;</string>
+      </property>
+      <property name="text">
+       <string>Modifier</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="modifier_id_evenement">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>30</y>
+        <width>113</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+                                         background-color: white;
+                                         border-radius: 10px;
+                                         font: bold 14px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="modifier_lieu">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>130</y>
+        <width>113</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+                                         background-color: white;
+                                         border-radius: 10px;
+                                         font: bold 14px;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_142">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>80</y>
+        <width>55</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Nom</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_143">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>130</y>
+        <width>111</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Lieu</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_144">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>30</y>
+        <width>121</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Id_Evenement</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="modifier_nom">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>80</y>
+        <width>113</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+                                         background-color: white;
+                                         border-radius: 10px;
+                                         font: bold 14px;</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QLineEdit" name="chercher_eve">
+     <property name="geometry">
+      <rect>
+       <x>630</x>
+       <y>60</y>
+       <width>151</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: black;
+                                         background-color: white;
+                                         border-radius: 10px;
+                                         font: bold 14px;</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="chercher_modif_eve">
+     <property name="geometry">
+      <rect>
+       <x>810</x>
+       <y>60</y>
+       <width>251</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: white;
+                                         
+background-color: rgb(255, 0, 0);
+                                         border-radius: 10px;
+                                         font: bold 14px;</string>
+     </property>
+     <property name="text">
+      <string>Chercher reservation par identifiant</string>
+     </property>
+    </widget>
+    <widget class="QTableView" name="table_evee">
+     <property name="geometry">
+      <rect>
+       <x>410</x>
+       <y>110</y>
+       <width>771</width>
+       <height>171</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: black;
+                                        
+background-color: rgb(245, 245, 245);
+font: 14pt &quot;MS Shell Dlg 2&quot;;
+                                         border-radius: 10px;
+                                         font: bold 14px;</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab">
+    <attribute name="title">
+     <string>Ajouter/supprimer Tournoi</string>
+    </attribute>
+    <widget class="QPushButton" name="supprimer_tourn">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>400</y>
+       <width>241</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: white;
+                                         
+background-color: rgb(255, 0, 0);
+                                         border-radius: 10px;
+                                         font: bold 14px;
+</string>
+     </property>
+     <property name="text">
+      <string>Supprimer par identifiant</string>
+     </property>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_31">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>351</width>
+       <height>361</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
+     </property>
+     <property name="title">
+      <string>Ajouter un ticket</string>
+     </property>
+     <widget class="QLabel" name="label_145">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>60</y>
+        <width>111</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Id_tournoi</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="ajouter_idt">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>50</y>
+        <width>113</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+                                         background-color: white;
+                                         border-radius: 10px;
+                                         font: bold 14px;</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="ajouter_tour">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>330</y>
+        <width>101</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: white;
+                                         
+background-color: rgb(255, 0, 0);
+                                         border-radius: 10px;
+                                         font: bold 14px;</string>
+      </property>
+      <property name="text">
+       <string>Ajouter</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_148">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>110</y>
+        <width>111</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Nom</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="ajouter_nom_tr">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>110</y>
+        <width>113</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+                                         background-color: white;
+                                         border-radius: 10px;
+                                         font: bold 14px;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_151">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>160</y>
+        <width>111</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Discipline</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_154">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>230</y>
+        <width>111</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Type</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_155">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>290</y>
+        <width>111</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Date</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="ajouter_dis_tr">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>160</y>
+        <width>113</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+                                         background-color: white;
+                                         border-radius: 10px;
+                                         font: bold 14px;</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="ajouter_typ_tr">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>230</y>
+        <width>113</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+                                         background-color: white;
+                                         border-radius: 10px;
+                                         font: bold 14px;</string>
+      </property>
+     </widget>
+     <widget class="QDateEdit" name="ajouter_date_tr">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>290</y>
+        <width>110</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QRadioButton" name="tri_asc_tour">
+     <property name="geometry">
+      <rect>
+       <x>810</x>
+       <y>10</y>
+       <width>111</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: white;
+                                         
+background-color: rgb(255, 0, 0);
+                                         border-radius: 10px;
+                                         font: bold 14px;</string>
+     </property>
+     <property name="text">
+      <string>Croissante</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="supprimer_tour">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>400</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: black;
+                                         background-color: white;
+                                         border-radius: 10px;
+                                         font: bold 14px;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="tri_desc_tour">
+     <property name="geometry">
+      <rect>
+       <x>940</x>
+       <y>10</y>
+       <width>121</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: white;
+                                         
+background-color: rgb(255, 0, 0);
+                                         border-radius: 10px;
+                                         font: bold 14px;</string>
+     </property>
+     <property name="text">
+      <string>Decroissant</string>
+     </property>
+    </widget>
+    <widget class="QTableView" name="table_tour">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>60</y>
+       <width>771</width>
+       <height>361</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: black;
+                                        
+background-color: rgb(245, 245, 245);
+font: 14pt &quot;MS Shell Dlg 2&quot;;
+                                         border-radius: 10px;
+                                         font: bold 14px;</string>
+     </property>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_33">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>450</y>
+       <width>351</width>
+       <height>171</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
+     </property>
+     <property name="title">
+      <string>Ajouter un ticket</string>
+     </property>
+     <widget class="QLabel" name="label_146">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>30</y>
+        <width>121</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Id_evenement</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_150">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>70</y>
+        <width>111</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Id_tournoi</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="combo_Id_evenement_2">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>30</y>
+        <width>101</width>
+        <height>21</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="combo_Idt_2">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>70</y>
+        <width>101</width>
+        <height>21</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>120</y>
+        <width>101</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: white;
+                                         
+background-color: rgb(255, 0, 0);
+                                         border-radius: 10px;
+                                         font: bold 14px;
+</string>
+      </property>
+      <property name="text">
+       <string>Affecter</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab_2">
+    <attribute name="title">
+     <string>Modifier tournoi</string>
+    </attribute>
+    <widget class="QPushButton" name="chercher_modif_tour">
+     <property name="geometry">
+      <rect>
+       <x>790</x>
+       <y>40</y>
+       <width>221</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: white;
+                                         
+background-color: rgb(255, 0, 0);
+                                         border-radius: 10px;
+                                         font: bold 14px;</string>
+     </property>
+     <property name="text">
+      <string>Chercher ticket par identifiant</string>
+     </property>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_32">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>30</y>
+       <width>351</width>
+       <height>421</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
+     </property>
+     <property name="title">
+      <string>Modifier la reservation</string>
+     </property>
+     <widget class="QPushButton" name="modifier_tour">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>380</y>
+        <width>101</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: white;
+                                         
+background-color: rgb(255, 0, 0);
+                                         border-radius: 10px;
+                                         font: bold 14px;</string>
+      </property>
+      <property name="text">
+       <string>Modifier</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="modifier_nom_tr">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>150</y>
+        <width>113</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+                                         background-color: white;
+                                         border-radius: 10px;
+                                         font: bold 14px;</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="modifier_id_evenement_2">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>40</y>
+        <width>113</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+                                         background-color: white;
+                                         border-radius: 10px;
+                                         font: bold 14px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="modifier_idt">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>100</y>
+        <width>113</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+                                         background-color: white;
+                                         border-radius: 10px;
+                                         font: bold 14px;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_149">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>240</y>
+        <width>111</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_152">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>100</y>
+        <width>111</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Id_tournoi</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_153">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>40</y>
+        <width>101</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Id_evenement</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_156">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>150</y>
+        <width>111</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Nom</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_157">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>210</y>
+        <width>111</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Discipline</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_158">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>260</y>
+        <width>111</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Type</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_159">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>310</y>
+        <width>111</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+font: 11pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Date</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="modifier_dis_tr">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>200</y>
+        <width>113</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+                                         background-color: white;
+                                         border-radius: 10px;
+                                         font: bold 14px;</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="modifier_typ_tr">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>260</y>
+        <width>113</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+                                         background-color: white;
+                                         border-radius: 10px;
+                                         font: bold 14px;</string>
+      </property>
+     </widget>
+     <widget class="QDateEdit" name="modifier_date_tr">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>310</y>
+        <width>110</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QTableView" name="table_Re_tour">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>90</y>
+       <width>771</width>
+       <height>191</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: black;
+                                        
+background-color: rgb(245, 245, 245);
+font: 14pt &quot;MS Shell Dlg 2&quot;;
+                                         border-radius: 10px;
+                                         font: bold 14px;</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="chercher_res_2">
+     <property name="geometry">
+      <rect>
+       <x>620</x>
+       <y>40</y>
+       <width>151</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: black;
+                                         background-color: white;
+                                         border-radius: 10px;
+                                         font: bold 14px;</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab_3">
+    <attribute name="title">
+     <string>Page</string>
+    </attribute>
+   </widget>
+   <widget class="QWidget" name="tab_4">
+    <attribute name="title">
+     <string>Page</string>
+    </attribute>
+   </widget>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>

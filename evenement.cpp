@@ -1,149 +1,135 @@
 #include "evenement.h"
-#include "ui_evenement.h"
-#include <QMessageBox>
-#include "gestion_eve.h"
-
-#include <QSqlQuery>
 #include <QDebug>
 #include <QVariant>
+#include <QSqlQuery>
 
-evenement::evenement(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::evenement)
+evenement::evenement()
 {
-    ui->setupUi(this);
-    ui->table_evene->setModel(tmpevenement.afficher_eve());
+  Id_evenement="";
+  Nom="";
+  Lieu="";
+}
 
+evenement::evenement( QString Id_evenement, QString Nom, QString Lieu)
+{
+    this->Id_evenement=Id_evenement;
+    this->Nom=Nom;
+    this->Lieu=Lieu;
 
 }
 
-evenement::~evenement()
+QString evenement::get_Id_evenement(){return Id_evenement;}
+QString evenement::get_Nom(){return Nom;}
+QString evenement::get_Lieu(){return Lieu;}
+
+bool evenement::ajouter_evenement()
 {
-    delete ui;
+    QSqlQuery query;
+    query.prepare("INSERT INTO EVEN (Id_Evenement, Nom, Lieu)"
+                  "VALUES (:Id_Evenement, :Nom, :Lieu)");
+
+
+    query.bindValue(":Id_Evenement",Id_evenement);
+    query.bindValue(":Nom",Nom);
+    query.bindValue(":Lieu",Lieu);
+
+    return query.exec();
 }
 
-void evenement::on_Ajouter_eve_clicked()
+bool evenement::supprimer_evenement(QString id)
 {
-    QString nom_eve = ui->ajouter_nom_eve->text();
-    QString id_eve = ui->ajouter_id_eve->text();
+    QSqlQuery query;
+    query.prepare("DELETE FROM EVEN WHERE Id_evenement = :id ");
+    query.bindValue(":id",id);
 
-
-    gestion_eve ga(nom_eve,id_eve);
-    bool test=ga.ajouter_eve();
-
-    if(test)
-    {
-        ui->table_evene->setModel(tmpevenement.afficher_eve());
-        QMessageBox::information(nullptr, QObject::tr("Ajouter un evenement"),QObject::tr("evenement ajoutee.\n""Click cancel to exit."),QMessageBox::Cancel);
-    }
-
+    return  query.exec();
 }
 
 
-QSqlQueryModel * gestion_eve::afficher_eve()
-{
-    QSqlQueryModel * model= new QSqlQueryModel();
-    model->setQuery("SELECT * FROM evenement");
+QSqlQueryModel * evenement:: afficher_tri_ID()
+{QSqlQueryModel * model= new QSqlQueryModel();
 
-
-    model->setHeaderData(0, Qt::Horizontal, QObject::tr("Nom "));
-    model->setHeaderData(1, Qt::Horizontal, QObject::tr("ID"));
-
+model->setQuery("select * from EVEN order by Id_evenement asc");
+model->setHeaderData(0, Qt::Horizontal, QObject::tr("Id_Evenement"));
+model->setHeaderData(1, Qt::Horizontal, QObject::tr("Nom"));
+model->setHeaderData(2, Qt::Horizontal, QObject::tr("Lieu"));
 
     return model;
 }
 
 
-void evenement::on_supprimer_even_clicked()
-{
-    QString id_eve = ui->supprimer_eve->text();
-    bool test = tmpevenement.supprimer_eve(id_eve);
 
-    if(test)
-    {
-        ui->table_evene->setModel(tmpevenement.afficher_eve());//refresh
-        QMessageBox::information(nullptr, QObject::tr("Supprimer un evenement"),
-                        QObject::tr("evenement supprimé.\n"
-                                    "Click Cancel to exit."), QMessageBox::Cancel);
+QSqlQueryModel * evenement:: afficher_tri_ID_DESC()
+{QSqlQueryModel * model= new QSqlQueryModel();
 
-        }
-        else
-            QMessageBox::critical(nullptr, QObject::tr("Supprimer un evenement"),
-                        QObject::tr("Erreur !.\n"
-                                    "Click Cancel to exit."), QMessageBox::Cancel);
+model->setQuery("select * from EVEN order by Id_evenement desc ");
+model->setHeaderData(0, Qt::Horizontal, QObject::tr("Id_Evenement"));
+model->setHeaderData(1, Qt::Horizontal, QObject::tr("Nom"));
+model->setHeaderData(2, Qt::Horizontal, QObject::tr("Lieu"));
 
-
-    }
-
-
-
-
-
-
-
-
-
-
-void evenement::on_chercher_modif_eve_clicked()
-{
-
-    QString id_eve = ui->chercher_eve->text();
-
-        ui->table_Re_eve->setModel(tmpevenement.afficher_Re_eve(id_eve));//refresh
-
+    return model;
 }
 
 
-void evenement::on_modifier_evene_clicked()
+bool evenement::modifier_evenement(QString Id_evenement, QString Nom, QString Lieu)
 {
+    QSqlQuery query;
 
 
-        QString nom_eve = ui->modifier_nom_eve->text();
-        QString id_eve = ui->modifier_id_eve->text();
+        query.prepare("UPDATE EVEN SET Nom=:Nom , Lieu=:Lieu  WHERE Id_evenement=:Id_evenement");
 
-    bool test=tmpevenement.modifier_evene(nom_eve,id_eve);
-
-
-    if (test)
-      {
-        ui->table_evene->setModel(tmpevenement.afficher_eve());//refresh
-        ui->table_Re_eve->setModel(tmpevenement.afficher_Re_eve(id_eve));//refresh
-
-    QMessageBox::information(nullptr, QObject::tr("modifier un evenement"),
-                    QObject::tr("evenement modifier.\n"
-                                "Click Cancel to exit."), QMessageBox::Cancel);
-
-    }
-    else
-        QMessageBox::critical(nullptr, QObject::tr("modifier un evenement"),
-                    QObject::tr("Erreur !.\n"
-                                "Click Cancel to exit."), QMessageBox::Cancel);
+        query.bindValue(":Id_evenement", Id_evenement);
+        query.bindValue(":Nom", Nom);
+        query.bindValue(":Lieu", Lieu);
 
 
+
+        return    query.exec();
 }
 
 
 
 
-void evenement::on_Statistique_eve_clicked()
-{
-    QString val = ui->chercher_stat->text(),b1;
-        float stat1=tmpstat.Calculer_Tab_Stat(val);  //pourcentage des bus de la marque val en panne
-        float stat2=100%-stat1;      //pourcentage des bus de la marque val en panne
-        ui->chercher_stat_2->setText("Supp a 20% pts");
-        ui->chercher_stat_4->setText("Inf a 20% pts");
-        ui->chercher_stat_3->setText(b1.setNum(stat1));
-        ui->chercher_stat_5->setText(b1.setNum(stat2));
 
+
+QSqlQueryModel * evenement::afficher_Re_evenement(QString val)
+{
+    QSqlQueryModel * model= new QSqlQueryModel();
+
+         model->setQuery("SELECT * from EVEN where Id_evenement= '"+val+"'") ;
+
+
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("Id_evenement "));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("Nom"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("Lieu"));
+
+
+    return model;
+}
+bool evenement::chercher_evenement()
+{
+   /* QSqlQuery query;
+    query.prepare("SELECT FROM EVEN WHERE id_evenement = :id_evenement ");
+    query.bindValue(":id_evenement", id_evenement);
+
+    return  query.exec(); */
 }
 
-void evenement::on_tri_asc_clicked()
-{
-    ui->table_evene->setModel(tmpevenement.afficher_tri_ID());
 
-}
 
-void evenement::on_tri_desc_clicked()
+
+/*QSqlQueryModel * reservation::afficher_dyna_reservation(QString rese)
 {
-    ui->table_evene->setModel(tmpevenement.afficher_tri_ID_DESC());
-}
+    QSqlQueryModel * model= new QSqlQueryModel();
+    model->
+            setQuery("select * from reservation where (reservation.Id_reservation LIKE '"+rese+"%')");
+
+
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("Id_reservation "));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("Nom"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("Prénom"));
+    model->setHeaderData(3, Qt::Horizontal, QObject::tr("type_place"));
+    model->setHeaderData(4, Qt::Horizontal, QObject::tr("type_payment"));
+    model->setHeaderData(5, Qt::Horizontal, QObject::tr("payment"));
+    return model;
+}*/

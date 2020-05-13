@@ -1,140 +1,153 @@
 #include "tournoi.h"
-#include "ui_tournoi.h"
-#include <QMessageBox>
-#include "gestion_tou.h"
-#include <QSqlQuery>
 #include <QDebug>
 #include <QVariant>
+#include <QSqlQuery>
 
-tournoi::tournoi(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::tournoi)
+tournoi::tournoi()
 {
-    ui->setupUi(this);
-    ui->table_tourn->setModel(tmptournoi.afficher_tourn());
 
-
+  Idt="";
+  nom_tr="";
+  dis_tr="";
+  typ_tr="";
+  date_tr="";
+  Id_evenement="";
 }
 
-tournoi::~tournoi()
+tournoi::tournoi( QString Idt, QString nom_tr, QString dis_tr, QString typ_tr, QString date_tr, QString Id_evenement)
 {
-    delete ui;
-}
 
-void tournoi::on_Ajouter_tourn_clicked()
-{
-    QString nom_tour = ui->ajouter_nom_tour->text();
-    QString id_tour = ui->ajouter_id_tour->text();
-    QString date_tour = ui->ajouter_date_tour->date();
-     QString fin_tour = ui->ajouter_fin_tour->date();
-    QString lieu_tour = ui->ajouter_lieu_tour->text();
-
-
-    gestion_tou ga(nom_tour,id_tour,date_tour,fin_tour,lieu_tour);
-    bool test=ga.ajouter_tourn();
-
-    if(test)
-    {
-        ui->table_tourn->setModel(tmptournoi.afficher_tourn());
-        QMessageBox::information(nullptr, QObject::tr("Ajouter un tournoi"),QObject::tr("tournoi ajoutee.\n""Click cancel to exit."),QMessageBox::Cancel);
-    }
-
+    this->Idt=Idt;
+    this->nom_tr=nom_tr;
+    this->dis_tr=dis_tr;
+    this->typ_tr=typ_tr;
+    this->date_tr=date_tr;
+    this->Id_evenement=Id_evenement;
 }
 
 
-QSqlQueryModel * gestion_tou::afficher_tourn()
+QString tournoi::get_Idt(){return Idt;}
+QString tournoi::get_nom_tr(){return nom_tr;}
+QString tournoi::get_dis_tr(){return dis_tr;}
+QString tournoi::get_typ_tr(){return typ_tr;}
+QString tournoi::get_date_tr(){return date_tr;}
+QString tournoi::get_Id_evenement(){return Id_evenement;}
+
+
+bool tournoi::ajouter_tour()
 {
-    QSqlQueryModel * model= new QSqlQueryModel();
-    model->setQuery("SELECT * FROM tournoi");
+    QSqlQuery query;
+    query.prepare("INSERT INTO TOUR (Idt, nom_tr, dis_tr, typ_tr, date_tr, Id_evenement)"
+                  "VALUES (:Idt, :nom_tr, :dis_tr, :typ_tr, :date_tr, :Id_evenement)");
 
 
-    model->setHeaderData(0, Qt::Horizontal, QObject::tr("Nom "));
-    model->setHeaderData(1, Qt::Horizontal, QObject::tr("ID"));
-    model->setHeaderData(2, Qt::Horizontal, QObject::tr("date debut"));
-    model->setHeaderData(3, Qt::Horizontal, QObject::tr("date fin"));
-    model->setHeaderData(4, Qt::Horizontal, QObject::tr("lieu"));
+
+    query.bindValue(":Idt",Idt);
+    query.bindValue(":nom_tr",nom_tr);
+    query.bindValue(":dis_tr",dis_tr);
+    query.bindValue(":typ_tr",typ_tr);
+    query.bindValue(":date_tr",date_tr);
+    query.bindValue(":Id_evenement",Id_evenement);
 
 
+    return query.exec();
+}
+bool tournoi::supprimer_tour(QString ids)
+{
+    QSqlQuery query;
+    query.prepare("DELETE FROM TOUR WHERE Idt = :ids ");
+    query.bindValue(":ids",ids);
+
+    return  query.exec();
+}
+
+bool tournoi::affecter_tour(QString Idt, QString Id_evenement)
+{
+    QSqlQuery query;
+
+
+        query.prepare("UPDATE TOUR SET Id_evenement=:Id_evenement WHERE Idt=:Idt");
+
+        query.bindValue(":Idt", Idt);
+        query.bindValue(":Id_evenement", Id_evenement);
+
+
+
+        return    query.exec();
+}
+
+QSqlQueryModel * tournoi:: refresh_Id_evenement()
+{QSqlQueryModel * model= new QSqlQueryModel();
+
+model->setQuery("select Id_evenement from EVEN order by Id_evenement asc ");
 
     return model;
 }
 
+QSqlQueryModel * tournoi:: refresh_Idt()
+{QSqlQueryModel * model= new QSqlQueryModel();
 
-void tournoi::on_supprimer_tourn_clicked()
-{
-    QString id_tour = ui->supprimer_tour->text();
-    bool test = tmptournoi.supprimer_tour(id_tour);
+model->setQuery("select Idt from TOUR order by Idt asc ");
 
-    if(test)
-    {
-        ui->table_tourn->setModel(tmptournoi.afficher_tourn());//refresh
-        QMessageBox::information(nullptr, QObject::tr("Supprimer un tournoi"),
-                        QObject::tr("tournoi supprimé.\n"
-                                    "Click Cancel to exit."), QMessageBox::Cancel);
+    return model;
+}
+QSqlQueryModel * tournoi:: afficher_tri_IDt()
+{QSqlQueryModel * model= new QSqlQueryModel();
 
-        }
-        else
-            QMessageBox::critical(nullptr, QObject::tr("Supprimer un tournoi"),
-                        QObject::tr("Erreur !.\n"
-                                    "Click Cancel to exit."), QMessageBox::Cancel);
-
-
-    }
-
-
-
-
-
-void tournoi::on_chercher_modif_tourn_clicked()
-{
-
-    QString id_tour = ui->chercher_tourn->text();
-
-        ui->table_Re_tourn->setModel(tmptournoi.afficher_Re_tourn(id_tour));//refresh
-
+model->setQuery("select * from TOUR order by Idt");
+model->setHeaderData(0, Qt::Horizontal, QObject::tr("Id_evenement "));
+model->setHeaderData(1, Qt::Horizontal, QObject::tr("Idt"));
+model->setHeaderData(2, Qt::Horizontal, QObject::tr("nom_tr"));
+model->setHeaderData(2, Qt::Horizontal, QObject::tr("dis_tr"));
+model->setHeaderData(2, Qt::Horizontal, QObject::tr("typ_tr"));
+model->setHeaderData(2, Qt::Horizontal, QObject::tr("date_tr"));
+    return model;
 }
 
+QSqlQueryModel * tournoi:: afficher_tri_IDt_DESC()
+{QSqlQueryModel * model= new QSqlQueryModel();
 
-void tournoi::on_modifier_tourn_clicked()
-{
+model->setQuery("select * from TOUR order by Idt desc ");
+model->setHeaderData(0, Qt::Horizontal, QObject::tr("Id_evenement "));
+model->setHeaderData(1, Qt::Horizontal, QObject::tr("Idt"));
+model->setHeaderData(2, Qt::Horizontal, QObject::tr("nom_tr"));
+model->setHeaderData(2, Qt::Horizontal, QObject::tr("dis_tr_tr"));
+model->setHeaderData(2, Qt::Horizontal, QObject::tr("typ_tr"));
+model->setHeaderData(2, Qt::Horizontal, QObject::tr("date_tr"));
 
-    QString nom_tour = ui->ajouter_nom_tour->text();
-    QString id_tour = ui->ajouter_id_tour->text();
-    QString date_tour = ui->ajouter_date_tour->date();
-     QString fin_tour = ui->ajouter_fin_tour->date();
-    QString lieu_tour = ui->ajouter_lieu_tour->text();
-
-    bool test=tmptournoi.modifier_tourn(nom_tour,id_tour,date_tour,fin_tour,lieu_tour);
-
-
-    if (test)
-      {
-        ui->table_tourn->setModel(tmptournoi.afficher_tourn());//refresh
-        ui->table_Re_tourn->setModel(tmptournoi.afficher_Re_tourn(id_tour));//refresh
-
-    QMessageBox::information(nullptr, QObject::tr("modifier un tournoi"),
-                    QObject::tr("Tournoi modifier.\n"
-                                "Click Cancel to exit."), QMessageBox::Cancel);
-
-    }
-    else
-        QMessageBox::critical(nullptr, QObject::tr("modifier un tournoi"),
-                    QObject::tr("Erreur !.\n"
-                                "Click Cancel to exit."), QMessageBox::Cancel);
-
-
+    return model;
 }
-
-
-
-
-void tournoi::on_tri_asc_clicked()
+bool tournoi::modifier_tour(QString Id_evenement, QString Idt, QString nom_tr, QString dis_tr, QString typ_tr, QString date_tr)
 {
-    ui->table_tourn->setModel(tmptournoi.afficher_tri_ID());
+    QSqlQuery query;
 
+
+        query.prepare("UPDATE TOUR SET Id_evenement=:Id_evenement, nom_tr=:nom_tr, dis_tr=:dis_tr, typ_tr=:typ_tr, date_tr=:date_tr WHERE Idt=:Idt");
+
+        query.bindValue(":Id_evenement", Id_evenement);
+        query.bindValue(":Idt", Idt);
+        query.bindValue(":nom_tr", nom_tr);
+        query.bindValue(":dis_tr",dis_tr);
+        query.bindValue(":typ_tr",typ_tr);
+        query.bindValue(":date_tr",date_tr);
+
+
+
+        return    query.exec();
 }
-
-void tournoi::on_tri_desc_clicked()
+QSqlQueryModel * tournoi::afficher_Re_tour(QString val)
 {
-    ui->table_tourn->setModel(tmptournoi.afficher_tri_ID_DESC());
+    QSqlQueryModel * model= new QSqlQueryModel();
+    model->
+            setQuery("select * from TOUR where Idt= '"+val+"'") ;
+
+
+
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("nom_tr"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("dis_tr"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("typ_tr"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("date_tr"));
+
+
+    return model;
 }

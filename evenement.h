@@ -1,46 +1,34 @@
 #ifndef EVENEMENT_H
 #define EVENEMENT_H
-
-#include <QDialog>
-#include <QSqlQuery>
+#include <QString>
 #include <QSqlQueryModel>
-#include "gestion_eve.h"
-#include "statistique_eve.h"
+#include <QSqlQuery>
 
-namespace Ui {
-class evenement;
-}
-
-class evenement : public QDialog
+class evenement
 {
-    Q_OBJECT
-
 public:
-    explicit evenement(QWidget *parent = nullptr);
-    ~evenement();
+    evenement();
+    evenement(QString,QString,QString);
 
-private slots:
-    void on_Ajouter_eve_clicked();
-
-    void on_supprimer_even_clicked();
-
-    void on_chercher_modif_eve_clicked();
-
-    void on_modifier_evene_clicked();
+    QString get_Id_evenement();
+    QString get_Nom();
+    QString get_Lieu();
 
 
-    void on_Statistique_eve_clicked();
+    bool ajouter_evenement();
+    QSqlQueryModel * afficher_evenement();
+    bool supprimer_evenement(QString id);
+    bool modifier_evenement(QString, QString, QString);
+    bool chercher_evenement();
+    QSqlQueryModel * afficher_Re_evenement(QString);
+    QSqlQueryModel * afficher_tri_ID();
+    QSqlQueryModel * afficher_tri_ID_DESC();
+    /*QSqlQueryModel * afficher_dyna_reservation(QString rese);*/
 
-    void on_tri_asc_clicked();
 
-    void on_tri_desc_clicked();
 
 private:
-    Ui::evenement *ui;
-    gestion_adh tmpevenement;
-
-    statistique_eve tmpstat;
+    QString  Id_evenement , Nom , Lieu;
 
 };
-
 #endif // EVENEMENT_H
