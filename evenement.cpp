@@ -118,18 +118,16 @@ bool evenement::chercher_evenement()
 
 
 
-/*QSqlQueryModel * reservation::afficher_dyna_reservation(QString rese)
+QSqlQueryModel * evenement::afficher_dyna_even(QString de)
 {
     QSqlQueryModel * model= new QSqlQueryModel();
     model->
-            setQuery("select * from reservation where (reservation.Id_reservation LIKE '"+rese+"%')");
+            setQuery("select * from EVEN where (EVEN.id_evenement LIKE '"+de+"%')");
 
 
-    model->setHeaderData(0, Qt::Horizontal, QObject::tr("Id_reservation "));
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("Id_evenement "));
     model->setHeaderData(1, Qt::Horizontal, QObject::tr("Nom"));
-    model->setHeaderData(2, Qt::Horizontal, QObject::tr("Prénom"));
-    model->setHeaderData(3, Qt::Horizontal, QObject::tr("type_place"));
-    model->setHeaderData(4, Qt::Horizontal, QObject::tr("type_payment"));
-    model->setHeaderData(5, Qt::Horizontal, QObject::tr("payment"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("Lieu"));
+
     return model;
-}*/
+}

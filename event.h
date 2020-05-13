@@ -5,6 +5,7 @@
 #include <QSqlQueryModel>
 #include "evenement.h"
 #include "tournoi.h"
+#include "match.h"
 
 #include <QDialog>
 
@@ -47,21 +48,28 @@ private slots:
 
     void on_pushButton_clicked();
 
-
-
-
-
     void on_chercher_res_2_textChanged(const QString &arg1);
 
-    void on_chercher_res_textChanged(const QString &arg1);
+    void on_chercher_eve_textChanged(const QString &arg1);
 
+    void on_ajouter_mat_clicked();
 
-    void on_table_tour_windowIconTextChanged(const QString &iconText);
+    void on_supprimer_mat_clicked();
+
+    void on_pushButton_2_clicked();
+    void on_tri_asc_mat_clicked();
+
+        void on_tri_desc_mat_clicked();
+        void on_modifier_mat_clicked();
+         void on_chercher_modif_mat_clicked();
+
+         void on_chercher_matt_textChanged(const QString &arg1);
 
 private:
     Ui::event *ui;
     evenement tmpevenement;
     tournoi tmptournoi;
+    match tmpmatch;
 };
 
 #endif // EVENT_H

@@ -31,14 +31,16 @@ SOURCES += \
     evenement.cpp \
     connexion.cpp \
     mainwindow.cpp \
-    tournoi.cpp
+    tournoi.cpp \
+    match.cpp
 
 HEADERS += \
         event.h \
     connexion.h \
     evenement.h \
     mainwindow.h \
-    tournoi.h
+    tournoi.h \
+    match.h
 
 FORMS += \
         event.ui \

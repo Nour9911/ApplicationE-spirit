@@ -98,9 +98,9 @@ model->setQuery("select * from TOUR order by Idt");
 model->setHeaderData(0, Qt::Horizontal, QObject::tr("Id_evenement "));
 model->setHeaderData(1, Qt::Horizontal, QObject::tr("Idt"));
 model->setHeaderData(2, Qt::Horizontal, QObject::tr("nom_tr"));
-model->setHeaderData(2, Qt::Horizontal, QObject::tr("dis_tr"));
-model->setHeaderData(2, Qt::Horizontal, QObject::tr("typ_tr"));
-model->setHeaderData(2, Qt::Horizontal, QObject::tr("date_tr"));
+model->setHeaderData(3, Qt::Horizontal, QObject::tr("dis_tr"));
+model->setHeaderData(4,Qt::Horizontal, QObject::tr("typ_tr"));
+model->setHeaderData(5, Qt::Horizontal, QObject::tr("date_tr"));
     return model;
 }
 
@@ -108,28 +108,28 @@ QSqlQueryModel * tournoi:: afficher_tri_IDt_DESC()
 {QSqlQueryModel * model= new QSqlQueryModel();
 
 model->setQuery("select * from TOUR order by Idt desc ");
-model->setHeaderData(0, Qt::Horizontal, QObject::tr("Id_evenement "));
-model->setHeaderData(1, Qt::Horizontal, QObject::tr("Idt"));
-model->setHeaderData(2, Qt::Horizontal, QObject::tr("nom_tr"));
-model->setHeaderData(2, Qt::Horizontal, QObject::tr("dis_tr_tr"));
-model->setHeaderData(2, Qt::Horizontal, QObject::tr("typ_tr"));
-model->setHeaderData(2, Qt::Horizontal, QObject::tr("date_tr"));
 
+model->setHeaderData(0, Qt::Horizontal, QObject::tr("Idt"));
+model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom_tr"));
+model->setHeaderData(2, Qt::Horizontal, QObject::tr("dis_tr"));
+model->setHeaderData(3,Qt::Horizontal, QObject::tr("typ_tr"));
+model->setHeaderData(4, Qt::Horizontal, QObject::tr("date_tr"));
     return model;
 }
-bool tournoi::modifier_tour(QString Id_evenement, QString Idt, QString nom_tr, QString dis_tr, QString typ_tr, QString date_tr)
+bool tournoi::modifier_tour(QString Idt, QString nom_tr, QString dis_tr, QString typ_tr, QString date_tr)
 {
     QSqlQuery query;
 
 
-        query.prepare("UPDATE TOUR SET Id_evenement=:Id_evenement, nom_tr=:nom_tr, dis_tr=:dis_tr, typ_tr=:typ_tr, date_tr=:date_tr WHERE Idt=:Idt");
+        query.prepare("UPDATE TOUR SET nom_tr=:nom_tr, dis_tr=:dis_tr, typ_tr=:typ_tr, date_tr=:date_tr WHERE Idt=:Idt");
 
-        query.bindValue(":Id_evenement", Id_evenement);
+
         query.bindValue(":Idt", Idt);
+        query.bindValue(":date_tr",date_tr);
         query.bindValue(":nom_tr", nom_tr);
         query.bindValue(":dis_tr",dis_tr);
         query.bindValue(":typ_tr",typ_tr);
-        query.bindValue(":date_tr",date_tr);
+
 
 
 
@@ -143,11 +143,27 @@ QSqlQueryModel * tournoi::afficher_Re_tour(QString val)
 
 
 
-    model->setHeaderData(2, Qt::Horizontal, QObject::tr("nom_tr"));
-    model->setHeaderData(2, Qt::Horizontal, QObject::tr("dis_tr"));
-    model->setHeaderData(2, Qt::Horizontal, QObject::tr("typ_tr"));
-    model->setHeaderData(2, Qt::Horizontal, QObject::tr("date_tr"));
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("Idt"));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("discipline"));
+    model->setHeaderData(3,Qt::Horizontal, QObject::tr("type"));
+    model->setHeaderData(4, Qt::Horizontal, QObject::tr("date"));
 
+    return model;
+}
+
+QSqlQueryModel * tournoi::afficher_dyna_tour(QString dt)
+{
+    QSqlQueryModel * model= new QSqlQueryModel();
+    model->
+            setQuery("select * from TOUR where (TOUR.Idt LIKE '"+dt+"%')");
+
+
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("Idt"));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("discipline"));
+    model->setHeaderData(3,Qt::Horizontal, QObject::tr("type"));
+    model->setHeaderData(4, Qt::Horizontal, QObject::tr("date"));
 
     return model;
 }

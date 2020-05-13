@@ -21,7 +21,7 @@ public:
     bool ajouter_tour();
     QSqlQueryModel * afficher_tour();
     bool supprimer_tour(QString id);
-    bool modifier_tour(QString, QString, QString,QString, QString, QString);
+    bool modifier_tour(QString, QString,QString, QString, QString);
     bool chercher_ticket();
     QSqlQueryModel * afficher_Re_tour(QString);
     QSqlQueryModel * afficher_tri_IDt();
@@ -29,7 +29,7 @@ public:
     QSqlQueryModel * refresh_Id_evenement();
     QSqlQueryModel * refresh_Idt();
     bool affecter_tour(QString,QString);
-    QSqlQueryModel * afficher_dyna_ticket(QString tic);
+    QSqlQueryModel * afficher_dyna_tour(QString dt);
 
 
 private:

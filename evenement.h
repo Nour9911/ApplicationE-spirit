@@ -23,7 +23,7 @@ public:
     QSqlQueryModel * afficher_Re_evenement(QString);
     QSqlQueryModel * afficher_tri_ID();
     QSqlQueryModel * afficher_tri_ID_DESC();
-    /*QSqlQueryModel * afficher_dyna_reservation(QString rese);*/
+    QSqlQueryModel * afficher_dyna_even(QString de);
 
 
 
